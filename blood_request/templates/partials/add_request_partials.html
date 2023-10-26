@@ -1,0 +1,12 @@
+{% load static %}
+{% load widget_tweaks %}
+<div class="form-group col-md-6">
+    <label for="{{ field.id_for_label }}"><i style="font-weight: bold;">{{ field.label }}: {% if field.field.required %}<strong class="text-danger">*</strong>{% endif %}</i></label>
+    {% render_field field class="form-control" %}
+    <div class="text-danger error_class">
+        {% for error in field.errors %}
+          <small>* {{error}}</small><br>
+        {% endfor %}
+    </div>
+</div>
+

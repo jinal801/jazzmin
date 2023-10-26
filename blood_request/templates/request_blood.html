@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block body %}
+<div class="container">
+    <h3><i style="font-weight: bold;">Request For Blood</i></h3>
+    <form method="POST" action="{% url 'blood_request:add_request' %}" novalidate>
+        {% csrf_token %}
+        <div class="row mt-1">
+            {% include "partials/add_request_partials.html" with field=form.name %}
+            {% include "partials/add_request_partials.html" with field=form.email %}
+        </div>
+
+        <div class="row mt-1">
+            {% include "partials/add_request_partials.html" with field=form.phone %}
+            {% include "partials/add_request_partials.html" with field=form.state %}
+        </div>
+
+        <div class="row mt-1">
+            <div class="form-group col-md-12">
+                {% include "partials/add_request_partials.html" with field=form.address %}
+            </div>
+        </div>
+
+        <div class="row mt-1">
+        <div class="form-group col-md-6">
+            {% include "partials/add_request_partials.html" with field=form.blood_group %}
+        </div>
+        <div class="form-group col-md-6">
+            {% include "partials/add_request_partials.html" with field=form.date %}
+        </div>
+        </div>
+        <div class="row mt-1">
+            {% include "partials/add_request_partials.html" with field=form.city %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
